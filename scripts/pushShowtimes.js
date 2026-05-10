@@ -1,24 +1,126 @@
-async function main() {
-  const webhookUrl = process.env.TRMNL_WEBHOOK_URL;
+const cheerio = require("cheerio");
 
+const webhookUrl = process.env.TRMNL_WEBHOOK_URL;
+
+const sourceUrl =
+  process.env.SHOWTIME_SOURCE_URL ||
+  "https://www.nyc.com/movies/theater/amc_magic_johnson_harlem_9.641704/";
+
+async function fetchHtml(url) {
+  const response = await fetch(url, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120 Safari/537.36",
+      Accept: "text/html",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch source page: ${response.status}`);
+  }
+
+  return response.text();
+}
+
+function parseShowtimes(html, targetDate = getTodayNYCDate()) {
+  const $ = cheerio.load(html);
+  const movies = [];
+
+  $(`article[data-date="${targetDate}"]`).each((_, article) => {
+    const $article = $(article);
+
+    const title = cleanText(
+      $article.find("h3 a").first().text() ||
+      $article.find("h3").first().text()
+    );
+
+    if (!title) return;
+
+    const times = [];
+
+    $article.find(".showtime-button").each((_, button) => {
+      const $button = $(button);
+
+      // Remove hidden ticket popup content, leaving only the visible time text.
+      const visibleTime = cleanText(
+        $button
+          .clone()
+          .children(".movie-ticket-urls")
+          .remove()
+          .end()
+          .text()
+      );
+
+      if (isShowtime(visibleTime)) {
+        times.push(normalizeTime(visibleTime));
+      }
+    });
+
+    if (times.length > 0) {
+      movies.push({
+        title,
+        times: [...new Set(times)],
+      });
+    }
+  });
+
+  return movies;
+}
+
+function getTodayNYCDate() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+  }).formatToParts(new Date());
+
+  const month = parts.find((p) => p.type === "month").value;
+  const day = parts.find((p) => p.type === "day").value;
+  const year = parts.find((p) => p.type === "year").value;
+
+  return `${month}/${day}/${year}`;
+}
+
+function cleanText(value) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function isShowtime(value) {
+  return /^\d{1,2}:\d{2}\s?(AM|PM)$/i.test(value);
+}
+
+function normalizeTime(value) {
+  return value
+    .replace(/\s+/g, " ")
+    .replace(/am/i, "AM")
+    .replace(/pm/i, "PM")
+    .trim();
+}
+
+async function pushToTrmnl(movies) {
   if (!webhookUrl) {
     throw new Error("Missing TRMNL_WEBHOOK_URL");
   }
 
   const payload = {
-  merge_variables: {
-    theater: "AMC Magic Johnson Harlem 9",
-    date_label: "Today",
-    updated_at: "May 10, 2026, 6:30 PM",
-    movies_json: JSON.stringify([
-      {
-        title: "Test Movie",
-        rating: "PG-13",
-        times: ["1:00 PM", "4:15 PM", "7:30 PM"]
-      }
-    ])
-  }
-};
+    merge_variables: {
+      theater: "AMC Magic Johnson Harlem 9",
+      date_label: "Today",
+      updated_at: new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York",
+      }),
+
+      // Easiest debugging field:
+      movie_count: movies.length,
+
+      // Safer if TRMNL has trouble with arrays:
+      movies_json: JSON.stringify(movies),
+
+      // Try this too; Liquid may support looping over it:
+      movies,
+    },
+  };
 
   const response = await fetch(webhookUrl, {
     method: "POST",
@@ -34,8 +136,21 @@ async function main() {
   if (!response.ok) {
     throw new Error(`TRMNL webhook failed: ${response.status} ${text}`);
   }
+}
 
-  console.log("Pushed showtimes to TRMNL");
+async function main() {
+  const html = await fetchHtml(sourceUrl);
+  const movies = parseShowtimes(html);
+
+  console.log("Parsed movies:", JSON.stringify(movies, null, 2));
+
+  if (movies.length === 0) {
+    throw new Error(
+      "No showtimes found. The page may be client-rendered or the selectors need updating."
+    );
+  }
+
+  await pushToTrmnl(movies);
 }
 
 main().catch((error) => {
