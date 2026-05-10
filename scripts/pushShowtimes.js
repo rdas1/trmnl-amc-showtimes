@@ -6,26 +6,19 @@ async function main() {
   }
 
   const payload = {
-    merge_variables: {
-      theater: "AMC Magic Johnson Harlem 9",
-      date_label: "Today",
-      updated_at: new Date().toLocaleString("en-US", {
-        timeZone: "America/New_York",
-      }),
-      movies: [
-        {
-          title: "Test Movie",
-          rating: "PG-13",
-          times: ["1:00 PM", "4:15 PM", "7:30 PM"],
-        },
-        {
-          title: "Another Test Movie",
-          rating: "R",
-          times: ["2:20 PM", "6:00 PM", "9:10 PM"],
-        },
-      ],
-    },
-  };
+  merge_variables: {
+    theater: "AMC Magic Johnson Harlem 9",
+    date_label: "Today",
+    updated_at: "May 10, 2026, 6:30 PM",
+    movies_json: JSON.stringify([
+      {
+        title: "Test Movie",
+        rating: "PG-13",
+        times: ["1:00 PM", "4:15 PM", "7:30 PM"]
+      }
+    ])
+  }
+};
 
   const response = await fetch(webhookUrl, {
     method: "POST",
@@ -33,8 +26,12 @@ async function main() {
     body: JSON.stringify(payload),
   });
 
+  const text = await response.text();
+
+  console.log("TRMNL status:", response.status);
+  console.log("TRMNL response:", text);
+
   if (!response.ok) {
-    const text = await response.text();
     throw new Error(`TRMNL webhook failed: ${response.status} ${text}`);
   }
 
