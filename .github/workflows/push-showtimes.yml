@@ -1,0 +1,23 @@
+name: Push AMC Harlem showtimes to TRMNL
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub cron is UTC.
+    # 11,16,21,01 UTC ≈ 7am, noon, 5pm, 9pm Eastern during daylight time.
+    - cron: "0 11,16,21,1 * * *"
+
+jobs:
+  push-showtimes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: node scripts/pushShowtimes.js
+        env:
+          TRMNL_WEBHOOK_URL: ${{ secrets.TRMNL_WEBHOOK_URL }}
