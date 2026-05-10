@@ -4,22 +4,31 @@ const webhookUrl = process.env.TRMNL_WEBHOOK_URL;
 
 const sourceUrl =
   process.env.SHOWTIME_SOURCE_URL ||
-  "https://www.nyc.com/movies/theater/amc_magic_johnson_harlem_9.641704/";
+  "https://www.fandango.com/amc-magic-johnson-harlem-9-aaovp/theater-page?format=all";
 
 async function fetchHtml(url) {
   const response = await fetch(url, {
     headers: {
       "User-Agent":
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120 Safari/537.36",
-      Accept: "text/html",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "Accept-Language": "en-US,en;q=0.9",
     },
   });
+
+  const text = await response.text();
+
+  console.log("Source status:", response.status);
+  console.log("HTML length:", text.length);
+  console.log("Contains AMC?", text.includes("AMC Magic Johnson Harlem"));
+  console.log("Contains showtime?", /showtime/i.test(text));
+  console.log("Preview:", text.slice(0, 1000));
 
   if (!response.ok) {
     throw new Error(`Failed to fetch source page: ${response.status}`);
   }
 
-  return response.text();
+  return text;
 }
 
 function parseShowtimes(html, targetDate = getTodayNYCDate()) {
