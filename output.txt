@@ -1,0 +1,229 @@
+Body preview: Menu
+All
+8 suggestions available
+Watchlist
+Sign in
+Sign in
+New customer? Create account
+EN
+Sponsored 
+Back
+AMC Magic Johnson Harlem 9
+2309 Frederick Douglass Blvd., New York NY 10027
+0.2 miles
+(888) 262-4386
+May 11
+Selected date
+10027, US
+Current location
+Michael
+20262h 7mPG-13
+7.7
+ (78K)
+Rate
+Mark as watched
+Standard:
+1:00 PM
+1:40 PM
+2:45 PM
+4:30 PM
+8:00 PM
+10:00 PM
+The Devil Wears Prada 2
+20261h 59mPG-13
+6.8
+ (33K)
+Rate
+Mark as watched
+Standard:
+1:15 PM
+4:15 PM
+7:15 PM
+10:15 PM
+Project Hail Mary
+20262h 36mPG-13
+8.3
+ (274K)
+Rate
+Mark as watched
+Standard:
+10:00 PM
+Hokum
+20261h 47mR
+7.3
+ (9.2K)
+Rate
+Mark as watched
+Standard:
+2:15 PM
+5:00 PM
+7:45 PM
+10:30 PM
+The Super Mario Galaxy Movie
+20261h 38mPG
+6.4
+ (48K)
+Rate
+Mark as watched
+Standard:
+1:30 PM
+4:15 PM
+Mortal Kombat II
+20261h 56mR
+7.0
+ (11K)
+Rate
+Mark as watched
+Standard:
+2:45 PM
+5:45 PM
+7:30 PM
+8:45 PM
+10:30 PM
+The Sheep Detectives
+20261h 49mPG
+7.7
+ (3.1K)
+Rate
+Mark as watched
+Standard:
+1:00 PM
+4:00 PM
+6:45 PM
+9:30 PM
+Billie Eilish: Hit Me Hard and Soft - A Listening Experience
+20241h
+7.0
+ (119)
+Rate
+Mark as watched
+Standard:
+1:15 PM
+3:45 PM
+4:45 PM
+7:00 PM
+9:45 PM
+Movie showtimes data provided by The Box Office Company and is subject to change.
+Sponsored 
+More to explore
+Theaters near you
+Maysles Cinema
+343 Lenox Avenue, New York NY 10027
+0.5 miles
+(212) 537-6843
+Regal Concourse
+214 East 161st Street, Bronx NY 10451
+2 miles
+AMC 84th Street 6
+2310 Broadway, New York NY 10024
+2 miles
+(888) 262-4386
+AMC Orpheum 7
+1538 Third Ave. (86th St.), New York NY 10028
+2 miles
+(888) 262-4386
+LeFrak Theater - American Museum of Natural History
+Central Park West at 79th Street, New York NY 10024
+2 miles
+(212) 769-5200
+JCC in Manhattan / Israel Film Center
+334 Amsterdam Avenue, New York NY 10023
+2 miles
+(646) 505-5708 ext. 4
+Barrymore Film Center
+153 Main Street, Fort Lee NJ 07024
+3 miles
+AMC Lincoln Square 13
+1998 Broadway, New York NY 10023
+3 miles
+(888) 262-4386
+Sponsored 
+Recently viewed
+You have no recently viewed pages
+Sponsored 
+Sign in for more access
+Follow IMDb on social
+Get the IMDb App
+For Android and iOS
+HelpSite IndexIMDbProBox Office MojoLicense IMDb Data
+Press RoomAdvertisingJobsConditions of UsePrivacy Policy
+Your Ads Privacy Choices
+
+© 1990-2026 by IMDb.com, Inc.
+
+Back to top
+Parsed movies: [
+  {
+    "title": "Michael",
+    "times": [
+      "1:00 PM",
+      "1:40 PM",
+      "2:45 PM",
+      "4:30 PM",
+      "8:00 PM",
+      "10:00 PM"
+    ]
+  },
+  {
+    "title": "The Devil Wears Prada 2",
+    "times": [
+      "1:15 PM",
+      "4:15 PM",
+      "7:15 PM",
+      "10:15 PM"
+    ]
+  },
+  {
+    "title": "Project Hail Mary",
+    "times": [
+      "10:00 PM"
+    ]
+  },
+  {
+    "title": "Hokum",
+    "times": [
+      "2:15 PM",
+      "5:00 PM",
+      "7:45 PM",
+      "10:30 PM"
+    ]
+  },
+  {
+    "title": "The Super Mario Galaxy Movie",
+    "times": [
+      "1:30 PM",
+      "4:15 PM"
+    ]
+  },
+  {
+    "title": "Mortal Kombat II",
+    "times": [
+      "2:45 PM",
+      "5:45 PM",
+      "7:30 PM",
+      "8:45 PM",
+      "10:30 PM"
+    ]
+  },
+  {
+    "title": "The Sheep Detectives",
+    "times": [
+      "1:00 PM",
+      "4:00 PM",
+      "6:45 PM",
+      "9:30 PM"
+    ]
+  },
+  {
+    "title": "Billie Eilish: Hit Me Hard and Soft - A Listening Experience",
+    "times": [
+      "1:15 PM",
+      "3:45 PM",
+      "4:45 PM",
+      "7:00 PM",
+      "9:45 PM"
+    ]
+  }
+]
+TRMNL status: 200
+TRMNL response: {"message":null,"merge_variables":{"theater":"AMC Magic Johnson Harlem 9","date_label":"Today","updated_at":"5/10/2026, 8:04:27 PM","movie_count":8,"movies_json":"[{\"title\":\"Michael\",\"times\":[\"1:00 PM\",\"1:40 PM\",\"2:45 PM\",\"4:30 PM\",\"8:00 PM\",\"10:00 PM\"]},{\"title\":\"The Devil Wears Prada 2\",\"times\":[\"1:15 PM\",\"4:15 PM\",\"7:15 PM\",\"10:15 PM\"]},{\"title\":\"Project Hail Mary\",\"times\":[\"10:00 PM\"]},{\"title\":\"Hokum\",\"times\":[\"2:15 PM\",\"5:00 PM\",\"7:45 PM\",\"10:30 PM\"]},{\"title\":\"The Super Mario Galaxy Movie\",\"times\":[\"1:30 PM\",\"4:15 PM\"]},{\"title\":\"Mortal Kombat II\",\"times\":[\"2:45 PM\",\"5:45 PM\",\"7:30 PM\",\"8:45 PM\",\"10:30 PM\"]},{\"title\":\"The Sheep Detectives\",\"times\":[\"1:00 PM\",\"4:00 PM\",\"6:45 PM\",\"9:30 PM\"]},{\"title\":\"Billie Eilish: Hit Me Hard and Soft - A Listening Experience\",\"times\":[\"1:15 PM\",\"3:45 PM\",\"4:45 PM\",\"7:00 PM\",\"9:45 PM\"]}]","movies":[{"title":"Michael","times":["1:00 PM","1:40 PM","2:45 PM","4:30 PM","8:00 PM","10:00 PM"]},{"title":"The Devil Wears Prada 2","times":["1:15 PM","4:15 PM","7:15 PM","10:15 PM"]},{"title":"Project Hail Mary","times":["10:00 PM"]},{"title":"Hokum","times":["2:15 PM","5:00 PM","7:45 PM","10:30 PM"]},{"title":"The Super Mario Galaxy Movie","times":["1:30 PM","4:15 PM"]},{"title":"Mortal Kombat II","times":["2:45 PM","5:45 PM","7:30 PM","8:45 PM","10:30 PM"]},{"title":"The Sheep Detectives","times":["1:00 PM","4:00 PM","6:45 PM","9:30 PM"]},{"title":"Billie Eilish: Hit Me Hard and Soft - A Listening Experience","times":["1:15 PM","3:45 PM","4:45 PM","7:00 PM","9:45 PM"]}]}}
